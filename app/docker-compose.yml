@@ -1,0 +1,8 @@
+version: '3'
+services:
+  my-back-service:
+    image: imagedb
+    ports:
+      - "5000:5000"
+    volumes:
+      - /path/to/host/directory:/path/in/container
