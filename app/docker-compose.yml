@@ -7,8 +7,8 @@ services:
     ports:
       - "5001:5000"
     volumes:
-      - /path/to/host/directory:/path/in/container
-  
+      - backend-data:/path/to/data/directory
+
   my-front-service:
     image: imagefront
     environment:
@@ -16,3 +16,6 @@ services:
       - WS_BACK_URL=http://my-back-service:5000
     ports:
       - "8080:80"
+
+volumes:
+  backend-data:
