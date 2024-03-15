@@ -2,7 +2,9 @@ version: '3'
 services:
   my-back-service:
     image: imagedb
+    environment:
+      - MY_ENV_VARIABLE=production
     ports:
-      - "5000:5000"
+      - "5001:5000"
     volumes:
       - /path/to/host/directory:/path/in/container
