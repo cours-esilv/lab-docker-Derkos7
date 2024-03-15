@@ -1,5 +1,11 @@
-FROM nginx:latest
+FROM nginx:alpine
+
+WORKDIR /usr/share/nginx/html
+
 COPY . /usr/share/nginx/html
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+
+# Set the environment variable to point to the backend service
+ENV WS_BACK_URL=http://actual_backend_service_url:5000
+
+# Entrypoint to start nginx in the foreground
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
