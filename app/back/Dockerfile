@@ -10,7 +10,11 @@ COPY . /app
 # Install any needed dependencies specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Set the CURRENT_ENVIRONMENT environment variable
 ENV CURRENT_ENVIRONMENT=production
+
+# Make port 5000 available to the world outside this container
+EXPOSE 5000
 
 # Run python3 -m flask run --host=0.0.0.0 when the container launches
 CMD ["python3", "-m", "flask", "run", "--host=0.0.0.0"]
