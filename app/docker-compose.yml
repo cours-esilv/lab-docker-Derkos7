@@ -3,8 +3,16 @@ services:
   my-back-service:
     image: imagedb
     environment:
-      - MY_ENV_VARIABLE=production
+      - BACK_ENV_VARIABLE=production
     ports:
       - "5001:5000"
     volumes:
       - /path/to/host/directory:/path/in/container
+  
+  my-front-service:
+    image: imagefront
+    environment:
+      - FRONT_ENV_VARIABLE=production
+      - WS_BACK_URL=http://my-back-service:5000
+    ports:
+      - "8080:80"
